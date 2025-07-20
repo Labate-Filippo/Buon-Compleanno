@@ -15,7 +15,7 @@ html, body {
   height: 100vh;
   width: 100vw;
   font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(-45deg, #001224, #3498db, #000269, #8b83ff);
+  background: linear-gradient(-45deg, #001224, #34db7a, #006960, #004126);
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
   overflow: hidden;
@@ -36,14 +36,14 @@ body {
 }
 
 .container {
-  width: 90vw;
+  width: 95vw;
   max-width: 800px;
-  height: 90vh;
+  height: 90vh;  /* Reduced from 95vh */
   max-height: 650px;
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(20px);
-  border-radius: 30px;
-  padding: 30px;
+  border-radius: 10px;
+  padding: 2rem;
   box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
   display: flex;
   align-items: center;
@@ -51,6 +51,7 @@ body {
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: transform 0.3s ease-out;
 }
 
 @keyframes gradientBG {
@@ -80,25 +81,40 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   text-align: center;
-  gap: 1rem;
+  padding: 1rem 0;  /* Reduced top padding */
 }
 
 .content {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 0.8rem;
-  margin: 0;
+  justify-content: center;
+  margin-top: 2.5rem;  /* Increased from 1.5rem to 2.5rem */
+  padding-top: 1rem;   /* Added padding at the top */
 }
 
-.text-slider h1, .text-slider p {
+.content-messages {
   width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.text-slider h1, .text-slider .message {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 1.8rem;  /* Standardized size for all content */
+  line-height: 1.8;   /* Increased line spacing */
+  color: #ffffff;
+  margin: 1.2rem 0;   /* Consistent margins */
   max-width: 90%;
   opacity: 0;
-  margin: 1rem 0;
   transform: translateY(20px);
   will-change: opacity, transform;
 }
@@ -109,35 +125,43 @@ body {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 500;
   color: #ffffff;
-  font-size: 2rem;
+  font-size: 1rem;
   line-height: 1.3;
   margin: 0;
 }
 
 .text-slider .message {
-  animation: fadeInUp 3s forwards;
   font-family: 'Cormorant Garamond', serif;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.95);
-  font-size: 2rem;
-  line-height: 1.3;
-  margin: 0;
+  font-size: 1.8rem;
+  line-height: 2;  /* Increased line height */
+  color: #ffffff;
+  margin: 1.5rem 0;  /* Increased margins */
+  max-width: 90%;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.5s ease forwards;
+  width: 100%;
+  max-width: 80%;
+  text-align: center;
+  margin: 0;  /* Remove margins to prevent spacing issues */
 }
 
 .text-slider .message:nth-of-type(1) {
-  animation-delay: 5s;
+  animation-delay: 2.5s;
 }
 
 .text-slider .message:nth-of-type(2) {
-  animation-delay: 7s;
+  animation-delay: 4.5s;
+}
+
+.text-slider .message:nth-of-type(3) {
+  animation-delay: 6.5s;
 }
 
 .text-slider .auguri {
-  animation: fadeInUp 1.5s forwards, shimmer 3s infinite;
-  animation-delay: 0.5s, 0.5s;
-  margin: 0;
-  padding: 0.5rem 0;
-  font-size: 4.5rem;
+  font-family: 'Great Vibes', cursive;
+  font-size: 4rem;
   background: linear-gradient(120deg, #ffd700, #ffac33, #ffd700);
   background-size: 200% auto;
   -webkit-background-clip: text;
@@ -146,12 +170,12 @@ body {
   text-shadow: 
     0 0 20px rgba(255, 215, 0, 0.4),
     0 0 40px rgba(255, 215, 0, 0.2);
-  font-family: 'Great Vibes', cursive;
   letter-spacing: 0.05em;
-  line-height: 0.9;
-  transform-origin: center;
-  position: relative;
-  z-index: 2;
+  line-height: 1.2;    /* Increased from 0.9 to 1.2 */
+  margin: 1rem 0 2rem 0;  /* Adjusted top margin from 0.5rem to 1rem */
+  opacity: 0;
+  animation: fadeInUp 1.5s forwards, shimmer 3s infinite;
+  animation-delay: 0.5s, 0.5s;
 }
 
 @keyframes shimmer {
@@ -225,11 +249,12 @@ p {
 }
 
 .footer {
-  margin-top: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;  /* Add bottom margin */
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 1.5s forwards;
-  animation-delay: 7s;
+  animation-delay: 8s;
 }
 
 #signature {
@@ -256,6 +281,10 @@ p {
 }
 
 @keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
   to {
     opacity: 1;
     transform: translateY(0);
@@ -323,6 +352,70 @@ p {
   }
 }
 
+@media (min-width: 768px) {
+  /* Desktop styles */
+  .container {
+    padding: 3rem;
+    border-radius: 20px;
+  }
+
+  .text-slider .auguri {
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .text-slider h1 {
+    font-size: 1.8rem;
+  }
+
+  .text-slider .message {
+    font-size: 1.5rem;
+    line-height: 1.7;
+  }
+
+  #signature {
+    font-size: 2.5rem;
+  }
+
+  .date {
+    font-size: 1.6rem;
+  }
+
+  .footer {
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Mobile styles */
+  .container {
+    height: 85vh;  /* Further reduced for mobile */
+    padding: 1.5rem;
+    border-radius: 15px;
+  }
+
+  .text-slider {
+    padding: 0.5rem 0;  /* Reduced padding for mobile */
+  }
+  .content-messages {
+    gap: 1rem;
+  }
+  
+  .text-slider .message {
+    max-width: 90%;
+    font-size: 1.2rem;
+    line-height: 1.8;
+  }
+
+  .text-slider .auguri {
+    font-size: 3rem;
+  }
+
+  .footer {
+    margin-bottom: 2.5rem;
+  }
+}
+
 /* Sparkle effect */
 .sparkle {
   position: absolute;
@@ -349,10 +442,6 @@ p {
   }
 }
 
-.container {
-  transition: transform 0.3s ease-out;
-}
-
 /* Previous styles continue... */
 .confetti {
   position: absolute;
@@ -375,4 +464,38 @@ p {
     transform: translateY(100vh) rotate(360deg);
     opacity: 0;
   }
+}
+
+/* Base animation for all messages */
+.message {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.5s ease forwards;
+}
+
+/* Individual delays for each message */
+.message:nth-of-type(1) {
+  animation-delay: 2s;
+}
+
+.message:nth-of-type(2) {
+  animation-delay: 4s;
+}
+
+.message:nth-of-type(3) {
+  animation-delay: 6s;
+}
+
+/* Footer animations */
+.footer {
+  opacity: 0;
+  animation: fadeInUp 1.5s ease forwards;
+  animation-delay: 8s;
+}
+
+/* Ensure the golden text appears first */
+.auguri {
+  opacity: 0;
+  animation: fadeInUp 1.5s ease forwards;
+  animation-delay: 0.5s;
 }
