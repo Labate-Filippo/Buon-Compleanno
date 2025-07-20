@@ -1,0 +1,378 @@
+/* Styles for elegant animated.container {
+  width: 90vw;
+  max-width: 800px;
+  height: 90vh;
+  max-height: 700px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border-radius: 30px;y card */
+
+@import url('https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:wght@300;500&family=Great+Vibes&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(-45deg, #2c3e50, #3498db, #e74c3c, #8e44ad);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.container {
+  width: 90vw;
+  max-width: 800px;
+  height: 90vh;
+  max-height: 650px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border-radius: 30px;
+  padding: 30px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.confetti-layer {
+  pointer-events: none;
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.text-slider {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0;
+}
+
+.text-slider h1, .text-slider p {
+  width: 100%;
+  max-width: 90%;
+  opacity: 0;
+  margin: 1rem 0;
+  transform: translateY(20px);
+  will-change: opacity, transform;
+}
+
+.text-slider h1 {
+  animation: fadeInUp 3s forwards;
+  animation-delay: 2.5s;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 2rem;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.text-slider .message {
+  animation: fadeInUp 3s forwards;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 2rem;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.text-slider .message:nth-of-type(1) {
+  animation-delay: 5s;
+}
+
+.text-slider .message:nth-of-type(2) {
+  animation-delay: 7s;
+}
+
+.text-slider .auguri {
+  animation: fadeInUp 1.5s forwards, shimmer 3s infinite;
+  animation-delay: 0.5s, 0.5s;
+  margin: 0;
+  padding: 0.5rem 0;
+  font-size: 4.5rem;
+  background: linear-gradient(120deg, #ffd700, #ffac33, #ffd700);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 
+    0 0 20px rgba(255, 215, 0, 0.4),
+    0 0 40px rgba(255, 215, 0, 0.2);
+  font-family: 'Great Vibes', cursive;
+  letter-spacing: 0.05em;
+  line-height: 0.9;
+  transform-origin: center;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  10%, 90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards;
+  text-shadow: 0 3px 15px rgba(80, 227, 194, 0.2);
+}
+
+p {
+  font-weight: 300;
+  font-size: 1.5rem;
+  line-height: 2;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards;
+  animation-delay: 0.3s;
+  margin-bottom: 2.5rem;
+}
+
+.auguri {
+  display: inline-block;
+  font-family: 'Great Vibes', cursive;
+  font-size: 4rem;
+  background: linear-gradient(120deg, #ffd700, #ffac33, #ffd700);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 10px rgba(255, 215, 0, 0.3);
+  margin: 0;
+  letter-spacing: 0.08em;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.footer {
+  margin-top: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.5s forwards;
+  animation-delay: 7s;
+}
+
+#signature {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  white-space: nowrap;
+  margin: 0;
+  letter-spacing: 0.2rem;
+  color: #ffffff;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  display: inline-block;
+}
+
+.date {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  letter-spacing: 0.15rem;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  display: inline-block;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+    opacity: 1;
+  }
+  to {
+    width: 200px;
+    opacity: 1;
+  }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #fffbe7 }
+}
+
+/* Sound toggle button */
+#sound-toggle {
+  background: rgba(255,255,255,0.13);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.2rem auto 0 auto;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(80,227,194,0.13);
+  transition: background 0.2s, box-shadow 0.2s;
+  outline: none;
+  z-index: 3;
+}
+#sound-toggle:focus {
+  background: rgba(255,255,255,0.22);
+  box-shadow: 0 0 0 3px #50E3C2;
+}
+.sound-icon {
+  font-size: 1.5rem;
+  color: #fffbe7;
+  pointer-events: none;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .container {
+    padding: 2rem 1.5rem;
+    border-radius: 1.5rem;
+    max-width: 95vw;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  .auguri {
+    font-size: 2rem;
+  }
+  #signature {
+    font-size: 2.5rem;
+  }
+}
+
+/* Sparkle effect */
+.sparkle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #ffd700;
+  pointer-events: none;
+  animation: sparkleAnim 1s ease-in-out forwards;
+}
+
+@keyframes sparkleAnim {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.container {
+  transition: transform 0.3s ease-out;
+}
+
+/* Previous styles continue... */
+.confetti {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 1;
+  will-change: transform, opacity;
+  animation: confettiFall 4s ease-out forwards;
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
